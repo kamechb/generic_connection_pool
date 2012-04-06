@@ -10,16 +10,17 @@ Gem::Specification.new do |s|
   s.version = ConnectionPool::VERSION
   s.summary = <<-EOF
     Always network clients require a connection pool, like database connection, cache connection and others.
-Generic connection pool can be used with anything. It is inspired from ActiveRecord ConnectionPool.
+Generic connection pool can be used with anything. It is extracted from ActiveRecord ConnectionPool.
 Sharing a limited number of network connections among many threads.
 Connections are created delayed.
   EOF
   s.description = <<-EOF
     Always network clients require a connection pool, like database connection, cache connection and others.
-Generic connection pool can be used with anything. It is inspired from ActiveRecord ConnectionPool.
+Generic connection pool can be used with anything. It is extracted from ActiveRecord ConnectionPool.
 Sharing a limited number of network connections among many threads.
 Connections are created delayed.
   EOF
+  s.homepage = "https://github.com/kamechb/generic_connection_pool"
 
   #### Which files are to be included in this gem?  Everything!  (Except CVS directories.)
 

@@ -1,4 +1,5 @@
 require 'rubygems'
+require 'active_support'
 require 'active_support/core_ext/module/synchronization'
 require 'monitor'
 require 'set'
@@ -56,7 +57,7 @@ require 'timeout'
 #   Do something in the block, that always create an adapter instance or connect to a server.
 #
 class ConnectionPool
-  VERSION = '0.1.0'
+  VERSION = '0.1.1'
 
   class ConnectionTimeoutError < ::Timeout::Error
   end

@@ -9,13 +9,13 @@ require 'spec/rake/spectask'
 desc 'Default: run test.'
 task :default => :spec
 
-desc 'Test the ao_locked gem.'
+desc 'Test the generic_connection_pool gem.'
 Spec::Rake::SpecTask.new(:spec) do |t|
 	t.spec_files = FileList['spec/**/*_spec.rb']
 	t.spec_opts = ['-c','-f','nested']
 end
 
-desc 'Generate documentation for the ao_locked gem.'
+desc 'Generate documentation for the generic_connection_pool gem.'
 Rake::RDocTask.new(:rdoc) do |rdoc|
   rdoc.rdoc_dir = 'rdoc'
   rdoc.title    = 'ConnectionPool'
