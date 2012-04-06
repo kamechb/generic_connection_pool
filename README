@@ -1,0 +1,47 @@
+= generic_connection_pool
+
+== DESCRIPTION
+Always network clients require a connection pool, like database connection, cache connection and others.
+Generic connection pool can be used with anything. It is extracted from ActiveRecord ConnectionPool,
+a little changed.Sharing a limited number of network connections among many threads.
+Connections are created delayed.
+
+== USEAGE
+
+Connections can be obtained and used from a connection pool in several
+ways:
+
+1. Use connection_pool.connection to obtain a connection instance.
+ and when you're done with the connection(s) and wish it to be returned
+ to the pool, you can call connection_pool.release_connection to release
+ connection back to the connection pool.
+2. Manually check out a connection from the pool with connection_pool.checkout.
+ You are responsible for returning this connection to the pool when
+ finished by calling connection_pool.checkin(connection).
+3. Use connection_pool.with_connection(&block), which obtains a connection,
+ yields it as the sole argument to the block, and returns it to the pool
+ after the block completes.
+
+ Connections in the pool may be Adapter instance that should implete methods like
+ verify!, disconnect!, active? etc.
+
+== Example
+  require 'generic_connection_pool'
+  connection_pool = ConnectionPool.new(:size => 5, :timeout => 5) do
+    new_connection_adapter
+  end
+  connection_pool.connection
+  connection_pool.release_connection
+
+  connection = connection_pool.checkout
+  connection_pool.checkin(connection)
+
+  connection.with_connection{|connection| do_somting_with_connection}
+
+  Do something in the block, that always create an adapter instance or connect to a server.
+
+== INSTALL
+  gem install generic_connection_pool
+
+== AUTHOR
+  Kame Chen
